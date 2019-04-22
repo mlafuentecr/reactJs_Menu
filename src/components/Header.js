@@ -1,7 +1,9 @@
 import React from 'react';
-class Header extends React.Component {
-  render() {
-    return (
+
+
+// function Header (props){} es lo mismo
+const Header = (props) => (
+
       <div className="menu">
        <header className="top">
        <h1>
@@ -13,11 +15,12 @@ class Header extends React.Component {
           day
           </h1>
         <h3 className="tagline">
-        <span>Fresh seafood Market</span>
+        <span>{props.tagline}</span>
         </h3>
        </header>
       </div>
-    );
-  }
-}
+
+
+);
+
 export default Header;
