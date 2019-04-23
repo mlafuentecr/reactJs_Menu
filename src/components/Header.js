@@ -4,7 +4,7 @@ import React from 'react';
 // function Header (props){} es lo mismo
 const Header = (props) => (
 
-      <div className="menu">
+      
        <header className="top">
        <h1>
          Catch
@@ -18,7 +18,7 @@ const Header = (props) => (
         <span>{props.tagline}</span>
         </h3>
        </header>
-      </div>
+
 
 
 );
