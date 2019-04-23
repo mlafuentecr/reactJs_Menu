@@ -2,6 +2,8 @@ import  React   from  'react';
 import  Header  from  './Header';
 import  Order   from  './Order';
 import  Inventory   from  './Inventory';
+import sampleFishes from '../sample-fishes'; //minuscula cuando no es class
+import FishItem from './FishItem';
 
 class App extends React.Component {
   
@@ -26,14 +28,29 @@ class App extends React.Component {
     );
   }
 
+  loadExamples = () => {
+    this.setState(
+    { fishes: sampleFishes}
+    );
+  }
   render() {
     return (
 
     <div className="catch-of-the-day">
 
-      <Header tagline='mario is cool' age={43} cool={true} />
+      <div className="menu">
+        <Header tagline='mario is cool' age={43} cool={true} />
+        <ul className="fishes">
+          {Object.keys(this.state.fishes).map(key => <FishItem key={key} />)} 
+          {/*es como n loop de objeto */}
+        </ul>
+      </div>
+
       <Order />
-      <Inventory  addFish={this.addFish} />
+      <Inventory  
+      addFish={this.addFish} 
+      loadExamples={this.loadExamples} 
+      />
 
     </div>
 
