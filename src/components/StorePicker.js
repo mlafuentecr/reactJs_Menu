@@ -8,16 +8,16 @@ class StorePicker extends React.Component {
   //1 event.preventDefault();// metodo previene sumit form
   //2 Get text from input ref={this.myInput}
   myInput = React.createRef();
-  
+
   //asi tendria que poner un constructor, super y bind
-  // para que this se leido tambien 
+  // para que this se leido tambien
   // goToStore(event){
-  
+
   // }
   goToStore = (event) =>{
     //1 metodo previene sumit form
     event.preventDefault();
-    console.log(this.myInput.current.value);
+    //console.log(this.myInput.current.value);
     const storeName = this.myInput.current.value;
 
     //3 cambiar de pagina
