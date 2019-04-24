@@ -15,8 +15,10 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props.match.params.storeId);
-    //this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`);
+    const  params  = this.props.match.params.storeId;
+    
+    console.log(params);
+    //this.ref = base.syncState();
   }
 
   //2 creo un metodo que agarra fish

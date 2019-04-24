@@ -1,8 +1,10 @@
 import Rebase from 're-base'; // mirrow to firebase
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/database';
+import { apiKey } from './basePass';
 
 const firebaseApp = firebase.initializeApp({
-
+  
     apiKey: "AIzaSyBwdITQrX2ERZfL1xzqRn_x1WmP9xSAIM4",
     authDomain: "menu-fish.firebaseapp.com",
     databaseURL: "https://menu-fish.firebaseio.com",
@@ -12,6 +14,7 @@ const firebaseApp = firebase.initializeApp({
  
 });
 
+console.log(apiKey());
 const base = Rebase.createClass(firebaseApp.database());
 
 //this is the name export
