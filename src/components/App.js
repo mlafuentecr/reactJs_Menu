@@ -1,18 +1,59 @@
-import  React   from  'react';
-import  Header  from  './Header';
-import  Order   from  './Order';
-import  Inventory   from  './Inventory';
-import sampleFishes from '../sample-fishes'; //minuscula cuando no es class
-import Fish from './Fish';
+import React        from  'react';
+import Header       from  './Header';
+import Order        from  './Order';
+import Inventory    from  './Inventory';
+import sampleFishes from  '../sample-fishes'; //minuscula cuando no es class
+import Fish         from  './Fish';
+import base         from  '../base';
 
 
 class App extends React.Component {
+ 
 
   //1 Creo un objeto state
   state = {
     fishes:{},
     order:{}
   }
+
+  componentDidMount() {
+    //reInstate local storage
+    const localStorageOrder = localStorage.getItem(this.props.match.params.storeId);
+    //console.log(localStorageOrder);
+
+    //Si tengo algo en memoria de esta tienda
+    //saque el string conviertalo en obj y metalo a orders
+
+    if(localStorageOrder){
+      //esto da un error porque no hay fishes cargados aun los carga de firebase
+      //entonces en order.js meto un si no hay fishes = null Buscar **FishesTest
+      this.setState({
+        order: JSON.parse(localStorageOrder)
+      });
+
+    }
+
+    // mando el parametro y un /variableName y le digo que duplique state fishes
+    this.fishesRef = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+            context: this,
+            state: 'fishes'
+    });
+   
+      //la order no se carga hasta cuando le doy add to order
+}
+componentDidUpdate(){
+ 
+  localStorage.setItem(
+    //Usa el nombre de la tienda y despues la orden que llevamos la almacena en string por eso es string gify
+      this.props.match.params.storeId, JSON.stringify(this.state.order)
+  );
+
+}
+
+componentWillUnmount(){
+  //si el usuario sale desmonte el firebase
+  base.removeBinding(this.fishesRef);
+}
 
   //2 creo un metodo que agarra fish
   addFish = (fish) => {
@@ -28,6 +69,17 @@ class App extends React.Component {
       { fishes: fishes }
     );
   }
+
+updateFish = (key, updateFish) => {
+  // 1. take a copy current Fish
+  const fishes = {...this.state.fishes};
+  // 2. update the state
+  fishes[key] = updateFish;
+  // 3. set that to state
+  this.setState({ fishes : fishes });
+
+}
+
 
   loadExamples = () => {
     this.setState(
@@ -65,8 +117,10 @@ class App extends React.Component {
 
       <Order fishes={this.state.fishes} order={this.state.order} />
       <Inventory
-      addFish={this.addFish}
-      loadExamples={this.loadExamples}
+      addFish       = {this.addFish}
+      updateFish    = {this.updateFish}
+      loadExamples  = {this.loadExamples}
+      fishes        = {this.state.fishes}
       />
 
     </div>
