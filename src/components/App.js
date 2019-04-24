@@ -1,10 +1,10 @@
-import  React   from  'react';
-import  Header  from  './Header';
-import  Order   from  './Order';
-import  Inventory   from  './Inventory';
-import sampleFishes from '../sample-fishes'; //minuscula cuando no es class
-import Fish from './Fish';
-
+import React        from  'react';
+import Header       from  './Header';
+import Order        from  './Order';
+import Inventory    from  './Inventory';
+import sampleFishes from  '../sample-fishes'; //minuscula cuando no es class
+import Fish         from  './Fish';
+import base         from  '../base';
 
 class App extends React.Component {
 
@@ -12,6 +12,11 @@ class App extends React.Component {
   state = {
     fishes:{},
     order:{}
+  }
+
+  componentDidMount(){
+    console.log(this.props.match.params.storeId);
+    //this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`);
   }
 
   //2 creo un metodo que agarra fish
