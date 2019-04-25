@@ -1,6 +1,11 @@
 import React from 'react';
 import { formatPrice } from '../helpers';
 class Order extends React.Component {
+  
+  removeFish = (key) => {
+    console.log(key);
+    //this.props.deleteFish(key);
+  }
 
   renderOrder = (key)=>{
 
@@ -15,10 +20,14 @@ class Order extends React.Component {
     if(!isAvailable){
       return <li key={key} > Sorry {fish.name} is no longer available</li>;
     }else{
-          return  <li key={key} >
+          return(
+          <li key={key} >
             {count} lbs {fish.name}
             {formatPrice(count*fish.price)} {/* formatPrice viene de helper formatea el preio  */}
-          </li>;
+            {/* remove from order en una linea para pasarle el key */}
+            <button onClick={() => this.props.deleteFishFromOrder(key)}>&times;</button>
+          </li>
+          )
     }
   }
 

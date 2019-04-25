@@ -88,7 +88,15 @@ deleteFish = ( key ) => {
   this.setState({ fishes : fishes });
 
 }
+deleteFishFromOrder = ( key ) => {
+  // 1. take a copy current Fish
+  const order = {...this.state.order};
+  // 2. remove item 
+  delete order[key];
+  // 3. set that to state
+  this.setState({ order : order });
 
+}
 
   loadExamples = () => {
     this.setState(
@@ -124,7 +132,7 @@ deleteFish = ( key ) => {
         </ul>
       </div>
 
-      <Order fishes={this.state.fishes} order={this.state.order} />
+      <Order fishes={this.state.fishes} order={this.state.order}  deleteFishFromOrder = {this.deleteFishFromOrder} />
       <Inventory
       addFish       = {this.addFish}
       updateFish    = {this.updateFish}
