@@ -8,7 +8,7 @@ import base         from  '../base';
 
 
 class App extends React.Component {
- 
+
 
   //1 Creo un objeto state
   state = {
@@ -38,11 +38,11 @@ class App extends React.Component {
             context: this,
             state: 'fishes'
     });
-   
+
       //la order no se carga hasta cuando le doy add to order
 }
 componentDidUpdate(){
- 
+
   localStorage.setItem(
     //Usa el nombre de la tienda y despues la orden que llevamos la almacena en string por eso es string gify
       this.props.match.params.storeId, JSON.stringify(this.state.order)
@@ -75,6 +75,15 @@ updateFish = (key, updateFish) => {
   const fishes = {...this.state.fishes};
   // 2. update the state
   fishes[key] = updateFish;
+  // 3. set that to state
+  this.setState({ fishes : fishes });
+
+}
+deleteFish = ( key ) => {
+  // 1. take a copy current Fish
+  const fishes = {...this.state.fishes};
+  // 2. update the state fierebase ocupa null
+  fishes[key] = null;
   // 3. set that to state
   this.setState({ fishes : fishes });
 
@@ -121,6 +130,7 @@ updateFish = (key, updateFish) => {
       updateFish    = {this.updateFish}
       loadExamples  = {this.loadExamples}
       fishes        = {this.state.fishes}
+      deleteFish    = {this.deleteFish}
       />
 
     </div>

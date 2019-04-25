@@ -1,25 +1,29 @@
 import React from 'react';
 
 class EditFishForm extends React.Component {
+
   handleChange = (event) =>{
-  
-    
-    
+
     const updateFish =  {
       //1. take copy current fish
       ...this.props.fish,
       //2 cambiamos lo que se actualizo
       [event.currentTarget.name]: event.currentTarget.value
     };
-  
+
       //Ipdate the props function that is defines in app
    this.props.updateFish(this.props.index, updateFish );
     //console.log(this.props.index);
     // console.log('change'+event.currentTarget.value);
     // console.log('updateFish'+ JSON.stringify(updateFish));
   }
+removeFish = () => {
+  this.props.deleteFish(this.props.index);
+}
+
+
   render() {
-  
+
     return (
       <div className="fish-edit">
         <input  type='text' name='name'  onChange={this.handleChange} value={this.props.fish.name}/>
@@ -32,7 +36,7 @@ class EditFishForm extends React.Component {
 
         <textarea name="desc" onChange={this.handleChange}  value={this.props.fish.desc}/>
         <input  type='text' name='image'  onChange={this.handleChange}  value={this.props.fish.image}/>
-     
+        <button onClick={this.removeFish} >Remove Fish</button>
       </div>
     );
   }
