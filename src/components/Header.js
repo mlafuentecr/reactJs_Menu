@@ -1,10 +1,11 @@
 import React from 'react';
+import PropoTypes from 'pro-types';
 
 
 // function Header (props){} es lo mismo
 const Header = (props) => (
 
-      
+
        <header className="top">
        <h1>
          Catch
@@ -18,9 +19,9 @@ const Header = (props) => (
         <span>{props.tagline}</span>
         </h3>
        </header>
-
-
-
 );
 
+Header.PropoTypes = {
+  tagline: PropoTypes.string.isRequired;
+}
 export default Header;
