@@ -3,9 +3,6 @@
 
 #basePass.js
 ```html
-//aca va la claves
-const apikey = 'firebaseKEY';
-const apiKey = () => {
-  return apikey;
-}
+const apiKey = 'pone clave aca';
+
 export {apiKey};
