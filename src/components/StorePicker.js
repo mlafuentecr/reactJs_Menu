@@ -1,10 +1,15 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import PropTypes      from 'prop-types';
 import { getFunName } from '../helpers';
+
 
 // import React, { Fragment } from 'react'; <Fragment>  asi o
 // como esta ahora para que react lea varios tags or divs sino lee solo uno
 class StorePicker extends React.Component {
+  static propTypes = {
+    history: PropTypes.object
+  }
   //1 event.preventDefault();// metodo previene sumit form
   //2 Get text from input ref={this.myInput}
   myInput = React.createRef();
