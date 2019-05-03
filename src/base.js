@@ -5,7 +5,7 @@ import { apiKey } from './basePass';
 
 const firebaseApp = firebase.initializeApp({
 
-    apiKey: {apiKey},
+    apiKey:  `${apiKey}`,
     authDomain: "menu-fish.firebaseapp.com",
     databaseURL: "https://menu-fish.firebaseio.com",
     projectId: "menu-fish",
