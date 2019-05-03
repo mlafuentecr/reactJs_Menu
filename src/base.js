@@ -1,11 +1,11 @@
 import Rebase from 're-base'; // mirrow to firebase
 import firebase from 'firebase/app';
 import 'firebase/database';
-//import { apiKey } from './basePass';
+import { apiKey } from './basePass';
 
 const firebaseApp = firebase.initializeApp({
 
-    apiKey: '', //apiKey(),
+    apiKey: {apiKey},
     authDomain: "menu-fish.firebaseapp.com",
     databaseURL: "https://menu-fish.firebaseio.com",
     projectId: "menu-fish",

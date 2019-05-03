@@ -1,5 +1,5 @@
 import React from 'react';
-import PropoTypes from 'pro-types';
+import PropTypes from 'prop-types';
 
 
 // function Header (props){} es lo mismo
@@ -21,7 +21,9 @@ const Header = (props) => (
        </header>
 );
 
-Header.PropoTypes = {
-  tagline: PropoTypes.string.isRequired;
+
+//con PropoTypes alerto que tagline es necerario
+Header.propTypes = {
+  tagline: PropTypes.string.isRequired
 }
 export default Header;
