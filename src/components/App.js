@@ -143,6 +143,7 @@ deleteFishFromOrder = ( key ) => {
       loadExamples  = {this.loadExamples}
       fishes        = {this.state.fishes}
       deleteFish    = {this.deleteFish}
+      storeId       = {this.props.match.params.storeId}
       />
 
     </div>
